@@ -12,10 +12,5 @@ public class DashBoardController : Controller
         return View();
     }
 
-    public async Task<IActionResult> Create()
-    {
-        SliderRepository repository = new();
-        await repository.AddAsync(new() { Title = "Emiliya", Description = "BlaBla", Price = 10, ImagePath = "1-1-120x120.webp" });
-        return Ok("done");
-    }
+    
 }

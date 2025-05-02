@@ -1,10 +1,9 @@
-﻿namespace Pronia.Models
+﻿namespace Pronia.Models;
+
+public class Slider : BaseEntity
 {
-    public class Slider : BaseEntity
-    {
-        public string ImagePath { get; set; }
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public decimal Price { get; set; }
-    }
+    public string ImagePath { get; set; }
+    public string Title { get; set; }
+    public string Description { get; set; }
+    public decimal Price { get; set; }
 }
