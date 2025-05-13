@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using Pronia.Context;
+
 namespace Pronia
 {
     public class Program
@@ -6,6 +9,8 @@ namespace Pronia
         {
             var builder = WebApplication.CreateBuilder(args);
 
+
+            builder.Services.AddDbContext<ProniaDbContext>(leyla => leyla.UseSqlServer("Server=B3-14;Database=ProniaTask;Trusted_Connection=True;TrustServerCertificate=True"));
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
@@ -27,7 +32,7 @@ namespace Pronia
             app.UseAuthorization();
             app.MapControllerRoute(
             name: "areas",
-            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+            pattern: "{area:exists}/{controller=DashBoard}/{action=Index}/{id?}");
 
             app.MapControllerRoute(
                 name: "default",

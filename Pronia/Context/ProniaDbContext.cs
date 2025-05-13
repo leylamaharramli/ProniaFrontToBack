@@ -1,16 +1,24 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Pronia.Models;
 
 namespace Pronia.Context
 {
-    public class ProniaDbContext : DbContext
+    public class ProniaDbContext : IdentityDbContext<User,IdentityRole<Guid>,Guid>
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ProniaDbContext(DbContextOptions options) : base(options)
         {
-            optionsBuilder.UseSqlServer("Server=.;Database=ProniaTask;Trusted_Connection=True;TrustServerCertificate=True");
-            base.OnConfiguring(optionsBuilder);
         }
 
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer("Server=.;Database=ProniaTask;Trusted_Connection=True;TrustServerCertificate=True");
+        //    base.OnConfiguring(optionsBuilder);
+        //}
+
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Service> Services { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }
